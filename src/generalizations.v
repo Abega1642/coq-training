@@ -84,5 +84,25 @@ Proof.
  simpl.
  reflexivity.
 Qed.
- 
 
+Inductive couple (X Y : Type) : Type :=
+ | pair (x : X) (y : Y).
+
+Notation "( x , y )" := ( pair _ _ x y).
+
+Check (0, 1).
+
+
+Fixpoint combine ( X Y : Type ) (l_x : list X) (l_y : list Y) : list ( couple X Y ) :=
+ match l_x, l_y with
+  | [], _ => []
+  | _, [] => []
+  | (h_x :: t_x) , (h_y :: t_y) => ( (h_x, h_y ) :: ( combine X Y t_x t_y))
+ end.
+
+Example map_of_bool_and_nat:
+ ( combine nat bool [0; 1] [false; true] ) = [ (0 , false); (1 , true)].
+Proof.
+ simpl.
+ reflexivity.
+Qed.
