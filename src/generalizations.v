@@ -135,6 +135,7 @@ Proof.
    reflexivity.
 Qed.
 
+(* By established definition *)
 Lemma length_preserves_identity_over_nat:
  forall ( T : Type ), length T [] = 0.
 Proof.
