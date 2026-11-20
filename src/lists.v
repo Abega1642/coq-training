@@ -51,21 +51,6 @@ Fixpoint reverse_list (lst : nat_list) : nat_list :=
   | h :: t => reverse_list t ++ [ h ]
  end.
 
-(**
-    This following proof reminds of the definition of homomorphism are.
-    Recall: 
-        Let (G_1, ++) and (G_2, +) two groups.
-        Let f be a homomorphis from G_1 to G_2 such as:
-         f:  G_1 -> G_2
-             x_1 |-> x_2 
-        And forall x_1, x_2 \in G_1, we have : f(x ++ y) = f(x) + f(y)
-
-    
-    But here we have two monoids (G_1, ++) and (G_2, +) :
-      -  (G_1 , ++) := ( {list}, append_list )
-      -  (G_2 , +)  := ( (\mathbb{N} , + )
-      -  f  := length_of_list
-**)
 
 Theorem length_of_list_is_distributive:
  forall l_1 l_2 : nat_list, 
@@ -96,3 +81,4 @@ Proof.
    rewrite Nat.add_1_r.
    reflexivity.
 Qed.
+Check nil.
